@@ -32,8 +32,7 @@ app.get('/store/:id',(req,res)=> {
     })
 })
 
-
-app.post('/store',(req,res)=> {   //add data from body/raw
+app.post('/store',(req,res)=> {    //add data from body/raw
     let sql = 'INSERT INTO Store SET ?' 
     let storeBody = req.body
     let query = db.query(sql, [storeBody], (err, results) => {
@@ -43,7 +42,13 @@ app.post('/store',(req,res)=> {   //add data from body/raw
     })
 })
 
-
+app.put('/store/:id',(req, res) => {    //update data from body/raw
+    let sql = "UPDATE Store SET name='"+req.body.name+"', description='"+req.body.description+"', prie='"+req.body.prie+"' WHERE id="+req.params.id
+    let query = db.query(sql, (err, results) => {
+        if(err) throw err;
+            res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+    });
+});
 
 app.listen('3000',() => {
     console.log('start port 3000')  
