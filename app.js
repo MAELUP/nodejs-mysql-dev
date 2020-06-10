@@ -35,7 +35,7 @@ app.get('/store/:id',(req,res)=> {
 app.post('/store',(req,res)=> {    //add data from body/raw
     let sql = 'INSERT INTO Store SET ?' 
     let storeBody = req.body
-    let query = db.query(sql, [storeBody], (err, results) => {
+    let query = db.query(sql, storeBody, (err, results) => {
         if(err) throw err
             console.log(results)
             res.json(results)
