@@ -43,7 +43,7 @@ app.post('/store',(req,res)=> {    //add data from body/raw
 })
 
 app.put('/store/:id',(req, res) => {    //update data from body/raw
-    let sql = "UPDATE Store SET name='"+req.body.name+"', description='"+req.body.description+"', prie='"+req.body.prie+"' WHERE id="+req.params.id
+    let sql = "UPDATE Store SET name='"+req.body.name+"', description='"+req.body.description+"', price='"+req.body.price+"' WHERE id="+req.params.id
     let query = db.query(sql, (err, results) => {
         if(err) throw err;
             console.log(results)
